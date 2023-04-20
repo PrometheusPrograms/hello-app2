@@ -35,7 +35,7 @@ if __name__ == "__main__":
 @app.route('/update', methods=['POST'])
 def webhook():
         if request.method == 'POST':
-            repo = git.Repo('./hello-app2')
+            repo = git.Repo('https://github.com/PrometheusPrograms/hello-app2.git')
             origin = repo.remotes.origin
             origin.pull()
             return 'Updated PythonAnywhere successfully', 200
