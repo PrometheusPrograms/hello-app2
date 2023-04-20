@@ -1,7 +1,7 @@
 import re
 from datetime import datetime
 import git
-import subprocess
+#import subprocess
 
 from flask import Flask, request
 #from flask.wrappers import Response
@@ -29,7 +29,7 @@ def hello_there(name):
     content = "Hello there, " + clean_name + "! It's " + formatted_now
     return content
 
-@app.route('/update1', methods=['POST'])
+@app.route('/update', methods=['POST'])
 def webhook():
         if request.method == 'POST':
             repo = git.Repo('./hello-app2')
@@ -43,6 +43,7 @@ def webhook():
 if __name__ == "__main__":
     app.run(host="127.0.0.1", port=8080, debug=True)
 
+'''
 @app.route('/update', methods=['POST'])
 def webhook():
     if request.method == 'POST':
@@ -53,3 +54,4 @@ def webhook():
         return 'Updated PythonAnywhere successfully', 200
     else:
         return 'Wrong event type', 400
+'''
