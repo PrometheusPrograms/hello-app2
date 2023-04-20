@@ -48,7 +48,7 @@ if __name__ == "__main__":
 def webhook():
     if request.method == 'POST':
         # Pull changes from the GitHub repo
-        subprocess.run(['git', '-C', './hello-app2', 'pull'])
+        subprocess.run(['git', '-C', './hello-app2', 'pull', 'origin','master'])
         # Restart the app to load the new code
         subprocess.run(['touch', '/var/www/greenmangroup_pythonanywhere_com_wsgi.py'])
         return 'Updated PythonAnywhere successfully', 200
