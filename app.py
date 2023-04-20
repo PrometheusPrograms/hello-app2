@@ -30,7 +30,7 @@ def hello_there(name):
     content = "Hello there, " + clean_name + "! It's " + formatted_now
     return content
 
-@app.route('/update', methods=['POST'])
+@app.route("/update", methods=['POST'])
 def webhook():
         if request.method == 'POST':
             repo = git.Repo('./hello-app2.git')
