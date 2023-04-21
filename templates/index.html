@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Prices</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Welcome B</h1>
+    <form method="POST" action="/">
+        {{ form.hidden_tag() }}
+        <div>
+            <label for="symbol">Enter Ticker Symbol:</label><br>
+            {{ form.symbol(size=20, id="symbol") }} <br>
+        </div>
+        <div>
+            <label for="start_date">Enter Start Date:</label><br>
+            {{ form.start_date(type="date", id="start_date") }}
+        </div>
+        <div>
+            <label for="end_date">Enter End Date:</label><br>
+            {{ form.end_date(type="date", id="end_date") }}
+        </div>
+        <button type="submit">Get It</button>
+    </form>
+    <table>
+        {{ table|safe }}
+    </table>
+    <div id="plot"></div>
+    <script>
+        var graph_json = {{ graph_json|safe }};
+        Plotly.newPlot('plot', graph_json.data, graph_json.layout);
+    </script>
+</body>
+</html>
